@@ -1,8 +1,6 @@
 package io.github.dougllasfps.imageliteapi.application.images;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/images")
-@Slf4j
+@Slf4j  // Lombok gerará o logger automaticamente
 public class ImagesController {
-    private static final Logger log = LoggerFactory.getLogger(ImagesController.class);
 
     @PostMapping
     public ResponseEntity save(
@@ -24,7 +21,7 @@ public class ImagesController {
             @RequestParam("name") String name,
             @RequestParam("tags") List<String> tags
     ) {
-        // Aqui, usamos o log para registrar informações da requisição
+        // Use o log gerado automaticamente pelo Lombok
         log.info("Imagem recebida: name: {}, size: {}", file.getOriginalFilename(), file.getSize());
         log.info("Nome definido para a imagem: {}", name);
         log.info("Tags: {}", tags);
